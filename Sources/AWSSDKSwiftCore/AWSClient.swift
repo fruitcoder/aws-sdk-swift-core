@@ -315,7 +315,8 @@ extension AWSClient {
 
             for key in keys {
                 if let value = dict[key] {
-                    queryItems.append("\(key)=\(value)")
+                    let stringValue = "\(value)"
+                    queryItems.append("\(key)=\(stringValue.replacingOccurrences(of: "=", with: "%3D"))")
                 }
             }
 
